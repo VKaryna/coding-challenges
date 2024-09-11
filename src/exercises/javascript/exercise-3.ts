@@ -9,6 +9,17 @@
  * Input: {id: 1, name: "Bob"}
  * Output: {1: "id", Bob: "name"}
  */
+
 export const exercise3 = (
   input: Record<string, string | number>
-): Record<string, string> => {};
+): Record<string, string> => {
+  const result: Record<string, string> = {};
+
+  Object.keys(input).forEach((key) => {
+    const value = input[key];
+
+    result[value.toString()] = key;
+  });
+
+  return result;
+};

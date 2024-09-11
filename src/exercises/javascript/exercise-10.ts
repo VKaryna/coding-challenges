@@ -8,6 +8,16 @@
  * Input: [asyncFunc1, asyncFunc2, asyncFunc3]
  * Output: A promise that resolves with the final result.
  */
+
 export const exercise10 = (
   input: ((arg: number) => Promise<number>)[]
-): Promise<number> => {};
+): Promise<number> => {
+  return input.reduce(async (inputPromise, currentPromise) => {
+    try {
+      const result = await inputPromise;
+      return await currentPromise(result);
+    } catch {
+      return 0;
+    }
+  }, Promise.resolve(0));
+};

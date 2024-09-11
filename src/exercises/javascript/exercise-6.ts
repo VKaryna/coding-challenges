@@ -7,6 +7,13 @@
  * Input: [0, "hello", 2, 42, "2", 4, 6, 8, 6]
  * Output: [0, "hello", 2, 42, 4, 6, 8]
  */
-export const exercise6 = (
-  input: (number | string)[]
-): (number | string)[] => {};
+
+export const exercise6 = (input: (number | string)[]): (number | string)[] => {
+  const result = input.map((element) => {
+    return typeof element === "string" && !isNaN(Number(element))
+      ? Number(element)
+      : element;
+  });
+
+  return Array.from(new Set(result));
+};

@@ -4,6 +4,9 @@
  *
  * Note: None of the promises will reject with an error.
  */
+
 export const exercise8 = <T extends Promise<any>>(
   input: T[]
-): Promise<Awaited<T>> => {};
+): Promise<Awaited<T>> => {
+  return Promise.race(input);
+};
