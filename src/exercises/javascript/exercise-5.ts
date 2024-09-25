@@ -8,4 +8,20 @@
  * Input: "is2 Thi1s T4est 3a"
  * Output: "Thi1s is2 3a T4est"
  */
-export const exercise5 = (input: string): string => {};
+
+export const exercise5 = (input: string): string => {
+  if (!input) {
+    return "";
+  }
+
+  const words = input.split(" ");
+
+  const sortedWords = words.toSorted((a, b) => {
+    const numA = Number(RegExp(/\d/).exec(a));
+    const numB = Number(RegExp(/\d/).exec(b));
+
+    return numA - numB;
+  });
+
+  return sortedWords.join(" ");
+};

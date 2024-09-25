@@ -8,7 +8,20 @@
  * Input: [1, "2", 3, "true", false, 42, "hello"]
  * Output: {number: [1, 3, 42], string: ["2", "true", "hello"], boolean: [false]}
  */
-export const exercise4 = (input: any[]): Partial<{ [K in TKey]: any[] }> => {};
+
+export const exercise4 = (input: any[]): Partial<{ [K in TKey]: any[] }> => {
+  return input.reduce((result, item) => {
+    const type = typeof item;
+
+    if (!result[type]) {
+        result[type] = [];
+    }
+
+    result[type].push(item);
+
+    return result;
+  }, {} as Partial<{ [K in TKey]: any[] }>);
+};
 
 const type = typeof ({} as any);
 type TKey = typeof type;

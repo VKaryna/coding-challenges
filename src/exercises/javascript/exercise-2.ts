@@ -8,4 +8,10 @@
  * Input: 145263
  * Output: 654321
  */
-export const exercise2 = (input: number): number => {};
+
+export const exercise2 = (input: number): number => {
+  const numArray = input.toString().split("").map(Number);
+  numArray.sort((a, b) => b - a);
+
+  return Number(numArray.join(""));
+};
